@@ -26,33 +26,41 @@ Requirements
 Role Variables
 --------------
 
-Available variables are listed below, along with default values (see defaults/main.yml):
+### Installation method
 
-`install_method: "git"`
+**Name**: `install_method`  
+**Default Value**: "git"  
+Specifies the method to use for installing the Glif CLI. Currently accepts "git" and will soon also accept "binary".
 
-What method to use to install the Glif CLI
-Accepts "git", will soon also accept "binary"
+### Glif CLI version
 
-`glif_cli_version: "v1.0.0"`
+**Name**: `glif_cli_version`  
+**Default Value**: "v1.0.0"  
+Version of the Glif CLI to install.
 
-Version of the Glif CLI to install
+### Users
 
-```
-glif_users:
-  - "lotus"
-```
+**Name**: `glif_users`  
+**Default Value**: 
+
+    ```yaml
+    glif_users:
+      - "lotus"
+    ```
 
 A list of users to configure the Glif CLI for.
 
-`use_calibrationnet: true`
+### Calibrationnet or Mainnet
 
-Whether to build for calibrationnet or mainnet.
-Defaults to calibnet for now, will default to mainnet later.
+**Name**: `use_calibrationnet`  
+**Default Value**: true
+
+Whether to build for calibrationnet or mainnet. Defaults to calibnet for now, will default to mainnet later.
 
 Dependencies
 ------------
 
-`gantsign.golang` role - use `ansible-galaxy install -r requirements.yml` to install it.
+This automation depends on the `gantsign.golang` Ansible role - use `ansible-galaxy install -r requirements.yml` to install it.
 
 Example Playbook
 ----------------
