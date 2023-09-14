@@ -1,0 +1,17 @@
+---
+# Default configuration for glifio_cli
+
+# What method to use to install the Glif CLI
+# Accepts "git" or "binary" (binary is TODO)
+install_method: "git"
+
+# Version of the Glif CLI to install
+glif_cli_version: "v1.0.0"
+
+# Users to configure the Glif CLI for
+glif_users:
+  - "lotus"
+
+# Whether to build for calibrationnet or mainnet.
+# Defaults to calibnet for now, will default to mainnet later.
+use_calibrationnet: true

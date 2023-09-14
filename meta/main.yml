@@ -1,0 +1,13 @@
+galaxy_info:
+  author: Glif.io
+  namespace: glifio
+  description: Setup and configure the Glif CLI
+  company: Glif
+  license: CC0-1.0
+
+  min_ansible_version: "2.12"
+
+  galaxy_tags: []
+
+  dependencies:
+    - name: "gantsign.golang"

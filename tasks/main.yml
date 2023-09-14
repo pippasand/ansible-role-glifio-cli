@@ -1,0 +1,36 @@
+---
+- name: Check out the Glif.io CLI
+  ansible.builtin.git:
+    repo: https://github.com/glifio/cli.git
+    dest: /usr/local/src/glifio_cli
+    version: "{{ glif_cli_version }}"
+    accept_newhostkey: true
+  become: true
+  become_user: root
+
+- name: Build the Glif.io CLI
+  community.general.make:
+    chdir: /usr/local/src/glifio_cli
+    target: glif
+    params:
+      GOROOT: "/opt/go/{{ golang_version }}"
+      PATH: "/opt/go/{{ golang_version }}/bin:$PATH"
+  become: true
+  become_user: root
+
+- name: Install the Glif.io CLI globally
+  community.general.make:
+    chdir: /usr/local/src/glifio_cli
+    target: install
+  become: true
+  become_user: root
+
+- name: Configure the Glif.io CLI for users
+  community.general.make:
+    chdir: /usr/local/src/glifio_cli
+    target: "{% if use_calibrationnet %}calibnet-{% endif %}config"
+  become: true
+  become_user: "{{ glif_user }}"
+  loop: "{{ glif_users }}"
+  loop_control:
+    loop_var: glif_user
