@@ -34,3 +34,7 @@
   loop: "{{ glif_users }}"
   loop_control:
     loop_var: glif_user
+
+- name: If we made it this far, print a success message!
+  ansible.builtin.debug:
+    msg: "Glif.io CLI installed successfully! Check out the documentation at https://github.com/glifio/cli and have fun!"

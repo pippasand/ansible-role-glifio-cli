@@ -1,0 +1,11 @@
+---
+# Install the Glif.io CLI
+- name: Install glif cli
+  hosts: glif
+  become: true
+
+  vars:
+    golang_version: 1.20.7
+
+  roles:
+    - role: glifio.cli
